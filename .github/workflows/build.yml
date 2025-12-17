@@ -53,7 +53,7 @@ jobs:
           cache-read-only: false
 
       - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install
 
       - name: Create Environment File
         run: |

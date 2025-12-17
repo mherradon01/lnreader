@@ -11,6 +11,7 @@
 	<key>signingStyle</key>
 	<string>automatic</string>
 	<key>teamID</key>
+	<!-- Leave empty for automatic signing, or populate with your Team ID for distribution -->
 	<string></string>
 </dict>
 </plist>

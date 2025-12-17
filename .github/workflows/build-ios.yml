@@ -75,24 +75,7 @@ jobs:
         env:
           COMMIT_COUNT: ${{ env.COMMIT_COUNT }}
           COMMIT_ID: ${{ env.COMMIT_ID }}
-        run: |
-          cd ios
-          xcodebuild -workspace LNReader.xcworkspace \
-            -scheme LNReader \
-            -configuration Release \
-            -destination generic/platform=iOS \
-            -archivePath build/LNReader.xcarchive \
-            archive \
-            CODE_SIGN_IDENTITY="" \
-            CODE_SIGNING_REQUIRED=NO \
-            CODE_SIGNING_ALLOWED=NO
-          
-          # Create IPA from archive
-          mkdir -p build/Payload
-          cp -R build/LNReader.xcarchive/Products/Applications/LNReader.app build/Payload/
-          cd build
-          zip -r LNReader-r${{ env.COMMIT_COUNT }}-${{ env.COMMIT_ID }}.ipa Payload
-          cd ..
+        run: bash scripts/build-ios-release.sh
 
       - name: Upload Release Artifact
         env:

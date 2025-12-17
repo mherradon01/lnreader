@@ -6,14 +6,14 @@
 
 
 + (NSString *)moduleName { 
-  return @"NativeEpubUtil";
+  return @"NativeEpub";
 }
 
 - (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:(const facebook::react::ObjCTurboModule::InitParams &)params { 
-  return std::make_shared<facebook::react::NativeEpubUtilSpecJSI>(params);
+  return std::make_shared<facebook::react::NativeEpubSpecJSI>(params);
 }
 
-- (NSDictionary * _Nullable)parseNovelAndChapters:(nonnull NSString *)epubDirPath { 
+- (NSDictionary * _Nullable)parseNovelAndChapters:(NSString * _Nonnull)epubDirPath { 
   NSMutableDictionary * res = [NSMutableDictionary dictionary];
   // TODO: implement parse epub
   return res;

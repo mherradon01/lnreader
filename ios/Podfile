@@ -58,6 +58,10 @@ target 'LNReader' do
         if config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'].to_f < 12.0
           config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
         end
+        
+        # Add RCTDeprecation header search path
+        config.build_settings['HEADER_SEARCH_PATHS'] ||= ['$(inherited)']
+        config.build_settings['HEADER_SEARCH_PATHS'] << '$(SRCROOT)/Pods/Headers/Public/RCTDeprecation'
       end
     end
   end

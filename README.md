@@ -68,6 +68,8 @@ Help translate LNReader into your language on [Crowdin](https://crowdin.com/proj
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md)
 
+For iOS-specific installation and building instructions, see [IOS_RELEASE.md](./IOS_RELEASE.md)
+
 ## License
 
 [MIT](https://github.com/LNReader/lnreader/blob/main/LICENSE)

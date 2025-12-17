@@ -11,7 +11,7 @@ LNReader now supports iOS! This guide will help you understand how to install an
 
 ## Installation
 
-### For Developers
+### For Regular Users
 
 Since LNReader is distributed outside the App Store, you'll need to:
 
@@ -34,6 +34,19 @@ If you're part of the beta testing program:
 - Accept the TestFlight invitation link
 - Install TestFlight from the App Store
 - Open the invitation and install LNReader
+
+### Using Development Builds from GitHub Actions
+
+If you want to test the latest unreleased changes:
+
+1. **Navigate to the [Actions tab](https://github.com/LNReader/lnreader/actions/workflows/build-ios.yml)**
+2. **Select a recent successful workflow run** (indicated by a green checkmark ✅)
+3. **Scroll down to the "Artifacts" section** at the bottom of the page
+4. **Download the IPA artifact** (named like `LNReader-iOS-r{build-number}-{commit-hash}`)
+5. **Extract the ZIP file** to get the `.ipa` file
+6. **Install using AltStore or Sideloadly** as described above
+
+> **Note**: GitHub artifacts are only available for 30 days after the build and require a GitHub account to download.
 
 ## Building from Source
 
@@ -66,7 +79,26 @@ cd ..
 pnpm run build:release:ios
 ```
 
-The built IPA will be located in `ios/build/`
+### Finding Your Built IPA
+
+After building, the IPA file will be located at:
+```
+ios/build/LNReader.ipa
+```
+
+You can quickly open the build directory with:
+```bash
+pnpm run build:open-ipa
+```
+
+Or manually navigate to:
+```bash
+open ios/build/
+```
+
+The IPA file name will be:
+- Local builds: `LNReader.ipa`
+- GitHub Actions builds: `LNReader-r{commit-count}-{commit-hash}.ipa`
 
 ### Development Build
 

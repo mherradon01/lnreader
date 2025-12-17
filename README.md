@@ -45,6 +45,11 @@
 </p>
 
 <p align="center">
+  <strong>Android:</strong> Download APK from <a href="https://github.com/LNReader/lnreader/releases">releases</a><br>
+  <strong>iOS:</strong> Download IPA from <a href="https://github.com/LNReader/lnreader/releases">releases</a> or <a href="https://github.com/LNReader/lnreader/actions/workflows/build-ios.yml">GitHub Actions artifacts</a> (see <a href="./IOS_RELEASE.md">iOS installation guide</a>)
+</p>
+
+<p align="center">
   <em>Android 7.0 or higher | iOS 15.1 or higher</em>
 </p>
 

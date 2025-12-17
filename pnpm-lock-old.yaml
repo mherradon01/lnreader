@@ -3458,6 +3458,10 @@ packages:
   lottie-ios@3.2.3:
     resolution: {integrity: sha512-mubYMN6+1HXa8z3EJKBvNBkl4UoVM4McjESeB2PgvRMSngmJtC5yUMRdhbbrIAn5Liu3hFGao/14s5hQIgtkRQ==}
 
+  lottie-ios@3.4.0:
+    
+
+
   lottie-ios@3.5.0:
     resolution: {integrity: sha512-DM6BYLhHTzvUsK89AjY+K9RwVGkOBwbH/iytjyZUmFbXz8DVsoPEyy+c7L5NZmVouZHvLnOQp6NaYTkwMo+iOg==}
 

@@ -1,0 +1,105 @@
+name: Build iOS
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-ios:
+    name: Build iOS App
+    runs-on: macos-14
+    timeout-minutes: 60
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Get pnpm Store Directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: Setup pnpm Cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Create Environment File
+        run: |
+          cat > .env << EOF
+          MYANIMELIST_CLIENT_ID=${{ vars.MYANIMELIST_CLIENT_ID }}
+          ANILIST_CLIENT_ID=${{ vars.ANILIST_CLIENT_ID }}
+          GIT_HASH=$(git rev-parse --short HEAD)
+          RELEASE_DATE=$(date -u +'%d/%m/%y %I:%M %p %Z')
+          BUILD_TYPE=Github Action
+          EOF
+
+      - name: Set Environment Variables
+        run: |
+          set -x
+          echo "COMMIT_COUNT=$(git rev-list --count HEAD)" >> $GITHUB_ENV
+          echo "COMMIT_ID=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+
+      - name: Install CocoaPods Dependencies
+        run: |
+          cd ios
+          bundle exec pod install
+
+      - name: Build iOS Release
+        env:
+          COMMIT_COUNT: ${{ env.COMMIT_COUNT }}
+          COMMIT_ID: ${{ env.COMMIT_ID }}
+        run: |
+          cd ios
+          xcodebuild -workspace LNReader.xcworkspace \
+            -scheme LNReader \
+            -configuration Release \
+            -destination generic/platform=iOS \
+            -archivePath build/LNReader.xcarchive \
+            archive \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO
+          
+          # Create IPA from archive
+          mkdir -p build/Payload
+          cp -R build/LNReader.xcarchive/Products/Applications/LNReader.app build/Payload/
+          cd build
+          zip -r LNReader-r${{ env.COMMIT_COUNT }}-${{ env.COMMIT_ID }}.ipa Payload
+          cd ..
+
+      - name: Upload Release Artifact
+        env:
+          COMMIT_COUNT: ${{ env.COMMIT_COUNT }}
+          COMMIT_ID: ${{ env.COMMIT_ID }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: LNReader-iOS-r${{ env.COMMIT_COUNT }}-${{ env.COMMIT_ID }}
+          path: ios/build/LNReader-r${{ env.COMMIT_COUNT }}-${{ env.COMMIT_ID }}.ipa
+          retention-days: 30

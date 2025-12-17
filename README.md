@@ -7,7 +7,7 @@
 <h1 align="center">LNReader</h1>
 
 <p align="center">
-  LNReader is a free and open source light novel reader for Android, inspired by Tachiyomi.
+  LNReader is a free and open source light novel reader for Android and iOS, inspired by Tachiyomi.
 </p>
 
 <div align="center">
@@ -45,7 +45,7 @@
 </p>
 
 <p align="center">
-  <em>Android 7.0 or higher.</em>
+  <em>Android 7.0 or higher | iOS 15.1 or higher</em>
 </p>
 
 <h2 align="center">Screenshots</h2>

@@ -13,7 +13,7 @@
   return std::make_shared<facebook::react::NativeEpubSpecJSI>(params);
 }
 
-- (NSDictionary * _Nullable)parseNovelAndChapters:(NSString * _Nonnull)epubDirPath { 
+- (NSDictionary * _Nullable)parseNovelAndChapters:(NSString *)epubDirPath { 
   NSMutableDictionary * res = [NSMutableDictionary dictionary];
   // TODO: implement parse epub
   return res;

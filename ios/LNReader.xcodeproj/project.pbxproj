@@ -11,7 +11,7 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		147488B02DD8E9BD00C6D0A2 /* Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147488AF2DD8E9BD00C6D0A2 /* Dynamic.swift */; };
 		147488B22DD8EA0700C6D0A2 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 147488B12DD8EA0700C6D0A2 /* loading.json */; };
-		147488B72DD97E8A00C6D0A2 /* RCTNativeFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147488B62DD97E8A00C6D0A2 /* RCTNativeFile.swift */; };
+
 		147488BC2DD9882000C6D0A2 /* RCTNativeFile.mm in Sources */ = {isa = PBXBuildFile; fileRef = 147488BB2DD9882000C6D0A2 /* RCTNativeFile.mm */; };
 		147488C02DD9A14100C6D0A2 /* RCTNativeVolumeButtonListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = 147488BF2DD9A14100C6D0A2 /* RCTNativeVolumeButtonListener.mm */; };
 		147488C42DD9A27400C6D0A2 /* RCTNativeEpubUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = 147488C32DD9A27400C6D0A2 /* RCTNativeEpubUtil.mm */; };
@@ -30,7 +30,7 @@
 		147488AA2DD8E7DE00C6D0A2 /* LNReader-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "LNReader-Bridging-Header.h"; path = "LNReader/LNReader-Bridging-Header.h"; sourceTree = "<group>"; };
 		147488AF2DD8E9BD00C6D0A2 /* Dynamic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dynamic.swift; sourceTree = "<group>"; };
 		147488B12DD8EA0700C6D0A2 /* loading.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
-		147488B62DD97E8A00C6D0A2 /* RCTNativeFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCTNativeFile.swift; sourceTree = "<group>"; };
+
 		147488BA2DD9882000C6D0A2 /* RCTNativeFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTNativeFile.h; sourceTree = "<group>"; };
 		147488BB2DD9882000C6D0A2 /* RCTNativeFile.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RCTNativeFile.mm; sourceTree = "<group>"; };
 		147488BE2DD9A14100C6D0A2 /* RCTNativeVolumeButtonListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTNativeVolumeButtonListener.h; sourceTree = "<group>"; };
@@ -71,7 +71,6 @@
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
 				147488AA2DD8E7DE00C6D0A2 /* LNReader-Bridging-Header.h */,
 				147488AF2DD8E9BD00C6D0A2 /* Dynamic.swift */,
-				147488B62DD97E8A00C6D0A2 /* RCTNativeFile.swift */,
 			);
 			name = LNReader;
 			sourceTree = "<group>";
@@ -353,7 +352,6 @@
 				147488B02DD8E9BD00C6D0A2 /* Dynamic.swift in Sources */,
 				761780ED2CA45674006654EE /* AppDelegate.swift in Sources */,
 				147488BC2DD9882000C6D0A2 /* RCTNativeFile.mm in Sources */,
-				147488B72DD97E8A00C6D0A2 /* RCTNativeFile.swift in Sources */,
 				147488C82DD9A68600C6D0A2 /* RCTNativeZipArchive.mm in Sources */,
 				A1FA4E89FDA7CFAD14C43693 /* ExpoModulesProvider.swift in Sources */,
 				147488C42DD9A27400C6D0A2 /* RCTNativeEpubUtil.mm in Sources */,

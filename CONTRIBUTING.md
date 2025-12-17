@@ -17,6 +17,10 @@ node --version >= 20   (for version management, get nvm [recommended])
 java sdk --version >= 17    (for version management, get jenv [optional])
 android sdk                 (https://developer.android.com/studio)
 
+# For iOS development (macOS only)
+xcode >= 14.0               (https://developer.apple.com/xcode/)
+cocoapods >= 1.13           (gem install cocoapods)
+
 # clone your fork to your local machine
 git clone https://github.com/<your-account-name>/lnreader.git
 
@@ -29,8 +33,14 @@ npm install -g pnpm
 # install dependencies
 pnpm install
 
+# For iOS: Install CocoaPods dependencies
+cd ios && bundle install && bundle exec pod install && cd ..
+
 # build the apk (the built apk will be found in ~/lnreader/android/app/build/outputs/apk/release/)
 pnpm run build:release:android
+
+# build the ipa for iOS (macOS only, the built ipa will be found in ~/lnreader/ios/build/)
+pnpm run build:release:ios
 ```
 
 ### Developing on Android
@@ -50,6 +60,31 @@ pnpm run dev:start
 
 # then to view on your android device (new terminal)
 pnpm run dev:android
+```
+
+### Developing on iOS
+
+You will need a macOS machine with Xcode installed, and optionally an iOS device or simulator.
+
+```bash
+# prerequisites (macOS only)
+xcode                       (https://developer.apple.com/xcode/)
+IDE
+
+# install iOS dependencies
+cd ios
+bundle install
+bundle exec pod install
+cd ..
+
+# run metro for development
+pnpm run dev:start
+
+# then to view on iOS simulator (new terminal)
+pnpm run dev:ios
+
+# or to run on a specific simulator
+pnpm run dev:ios -- --simulator="iPhone 15 Pro"
 ```
 
 ### Style & Linting
